@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test/tp1.spec.js"
+    "test": "node test/tp2.spec.js"
   },
   "keywords": [],
   "author": "",
