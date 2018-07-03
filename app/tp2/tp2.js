@@ -5,7 +5,9 @@ const numCPUs = require('os').cpus().length;
 
 const str = 'Alice donne 5BTC à Paul';
 
+
 if (cluster.isMaster) {
+    console.time('app');
 	for (let i = 0; i < numCPUs; i++) {
         const child = cluster.fork();
         child.on('message', (message) => {
@@ -13,7 +15,9 @@ if (cluster.isMaster) {
             // kill all child
             Object.keys(cluster.workers).forEach(c => {
                 cluster.workers[c].process.kill();
+                
             });
+            console.timeEnd('app');
         })
 	}
 } else {
@@ -23,7 +27,7 @@ if (cluster.isMaster) {
         let hash;
         while (true) {
              hash = await sha256(str + nonce);
-            if (hash.startsWith('00000')) {
+            if (hash.startsWith('000000')) {
                 break;
             }
             nonce += numCPUs;
