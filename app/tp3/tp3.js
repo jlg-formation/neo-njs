@@ -30,8 +30,12 @@ const server = http.createServer(async (req, res) => {
     
 });
 
-server.listen(port, () => {
-    console.log('Server started on port', port);
-});
+if (!module.parent) {
+    server.listen(port, () => {
+        console.log('Server started on port', port);
+    });
+} else {
+    module.exports = server;
+}
 
-module.exports = server;
+
