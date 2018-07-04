@@ -1,8 +1,15 @@
 const sleep = require('../app/lib/sleep');
+const assert = require('assert');
 
-(async function () {
-    for (let n = 30; n <= 31; n++) {
-        await sleep(10);
-        console.log('n:', n);
-    }
-})();
+
+
+describe('sleep', function () {
+    it('should wait at least 1000ms before executing.', async () => {
+        const date = new Date().getTime();
+        await sleep(1000);
+        const now = new Date().getTime();
+        const test = now - date >= 1000;
+        assert.ok(test);
+    });
+});
+
