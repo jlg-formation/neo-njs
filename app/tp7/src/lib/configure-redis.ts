@@ -2,6 +2,7 @@ const redis = require('redis');
 const bluebird = require('bluebird');
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
 
@@ -19,4 +20,4 @@ async function configure() {
     console.log('configured with success');
 }
 
-module.exports = { configure, redisClient };
+export { configure, redisClient };
