@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "elasticsearch": "^15.1.1",
+    "event-stream": "^3.3.4",
     "express": "^4.16.3",
     "jlg-hello-npm": "0.0.2",
     "mocha": "^5.2.0",
