@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 
+console.time('build');
 const i : number = 32;
 
 // kiki
@@ -13,3 +14,6 @@ for (let i  = 0; i < 1000000; i++) {
     const chunk = [(i + '').padStart(8, "0"), x, y].join(';') + '\n';
     stream.write(chunk);
 }
+stream.end();
+stream.on('finish', () => console.timeEnd('build'));
+// console.timeEnd('build');
